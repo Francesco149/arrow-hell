@@ -51,7 +51,7 @@ getIndex = (x, y) =>
     sub(pred(mul(fourteen, fourteen)),
         add(mul(succ(y), fourteen), succ(x)));
 
-neighbours = i =>
+neighbours = (world, i) =>
     add(
         add(
             add(add(nth(world, pred(sub(i, fourteen))),
@@ -74,7 +74,7 @@ lifeTick = (world) => {
     times(twelve, y => {
         newWorld = prepend(newWorld, nil);
         times(twelve, x => {
-            near = neighbours(getIndex(x, y));
+            near = neighbours(world, getIndex(x, y));
             c = if_(less(near, two),
                     () => nil,
                 elif(less(near, four),

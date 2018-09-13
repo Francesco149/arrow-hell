@@ -2,9 +2,9 @@ nil = (f, x) => x;
 succ = n => (f, x) => f(n(f, x));
 add = (a, b) => (f, x) => a(f, b(f, x));
 mul = (a, b) => b(n => add(a, n), nil);
-mkPair = (a, b) => f => f(a, b)
-fst = p => p((a, b) => a)
-snd = p => p((a, b) => b)
+mkPair = (a, b) => f => f(a, b);
+fst = p => p((a, b) => a);
+snd = p => p((a, b) => b);
 pred = n => fst(n(p => mkPair(snd(p), succ(snd(p))), mkPair(nil, nil)));
 sub = (a, b) => b(n => pred(n), a);
 y = (a, b) => a;
@@ -33,7 +33,7 @@ five = add(four, one);
 
 // ------------------------------------------------------------------------
 
-log = console.log
+log = console.log;
 toInteger = n => n(x => x + 1, 0);
 toBool = b => b(true, false);
 toArray = l => l((a, b) => [a].concat(b), []);
